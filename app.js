@@ -1,6 +1,10 @@
 const { WebSocketServer, OPEN } = require("ws");
-
-const wss = new WebSocketServer({ port: 3000 });
+const dotenv = require("dotenv");
+dotenv.config();
+const wss = new WebSocketServer({ port: process.env.PORT || 3000 });
+wss.on("listening", () => {
+  console.log("sockets ready");
+});
 
 let serverState = {
   board: [null, null, null, null, null, null, null, null, null],
