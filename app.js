@@ -1,7 +1,9 @@
 const { WebSocketServer, OPEN } = require("ws");
 
-const wss = new WebSocketServer({ port: 3000 });
-
+const wss = new WebSocketServer({ port: 443 });
+wss.on("listening", function () {
+  console.log("listening");
+});
 let serverState = {
   board: [null, null, null, null, null, null, null, null, null],
   isOver: false,
